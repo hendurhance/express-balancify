@@ -1,0 +1,31 @@
+{
+  "name": "express-balancify",
+  "version": "1.0.0",
+  "description": "A express server that share requests to multiple servers using round robin algorithm",
+  "main": "/src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "pm2 start ./src/servers/1.js && pm2 start ./src/servers/2.js && pm2 start ./src/servers/3.js && pm2 start ./src/servers/4.js && pm2 start ./src/servers/5.js && pm2 start ./src/servers/6.js && pm2 start ./src/servers/7.js && pm2 start ./src/servers/8.js && pm2 start ./src/servers/9.js && pm2 start ./src/servers/10.js",
+    "stop": "pm2 stop all",
+    "start:balancer": "node ./src/index.js",
+    "test:load:health": "npx loadtest -n 1200 -c 400 -k http://localhost:8000",
+    "test:load:api": "npx loadtest -n 1200 -c 400 -k http://localhost:8000/api",
+    "analyze": "python ./scripts/analyze.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "csv-writer": "^1.6.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "loadtest": "^8.0.6",
+    "pm2": "^5.3.0"
+  }
+}
