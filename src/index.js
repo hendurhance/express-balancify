@@ -70,18 +70,24 @@ app.listen(port, () => {
 
 // Function to select a server using Weighted Round Robin
 function selectServer(serverConfigurations) {
-  const totalWeight = serverConfigurations.reduce((acc, config) => acc + config.weight, 0);
-  const randomNum = Math.floor(Math.random() * totalWeight);
-  let weightSum = 0;
+  let currentWeightIndex = 0; 
 
-  for (const config of serverConfigurations) {
-    weightSum += config.weight;
-    if (randomNum < weightSum) {
-      return config;
+  while (true) {
+    const totalWeight = serverConfigurations.reduce((acc, config) => acc + config.weight, 0);
+    const randomNum = Math.floor(Math.random() * totalWeight);
+    let weightSum = 0;
+
+    for (let i = currentWeightIndex; i < serverConfigurations.length; i++) {
+      const config = serverConfigurations[i];
+      weightSum += config.weight;
+
+      if (randomNum < weightSum) {
+        currentWeightIndex = (i + 1) % serverConfigurations.length; // Update index for the next round
+        return config;
+      }
     }
+    currentWeightIndex = 0;
   }
-
-  return null;
 }
 
 // Function to proxy the request to the selected server
