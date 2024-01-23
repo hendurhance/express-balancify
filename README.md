@@ -2,7 +2,7 @@
 <h1><b>ExpressBalancify</b></h1>
 <p>Express.js-based load balancer that uses a weighted round-robin algorithm to distribute incoming requests across multiple servers.</p>
 <p>
-  <a href="#">Read the article on Medium</a>
+  <a href="https://medium.com/@hendurhance/how-to-build-a-weighted-round-robin-load-balancer-in-node-js-23f3f0364860">Read the article on Medium</a>
     ·
   <a href="https://github.com/sponsors/hendurhance">Sponsor</a>
     ·
@@ -10,7 +10,7 @@
 </p>
 </div>
 
-**Note: An article on this project will be available on [Medium](#) soon.**
+**Note: An article on this project is available on [Medium](https://medium.com/@hendurhance/how-to-build-a-weighted-round-robin-load-balancer-in-node-js-23f3f0364860), check it out.**
     
 
 ## Table of Contents
